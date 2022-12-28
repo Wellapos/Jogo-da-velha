@@ -4,8 +4,13 @@ import { ButtonStyled } from "./styles";
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
+  color?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({ label, ...props }) => {
-  return <ButtonStyled {...props}>{label}</ButtonStyled>;
+export const Button: React.FC<ButtonProps> = ({ label, color, ...props }) => {
+  return (
+    <ButtonStyled color={color} {...props}>
+      {label}
+    </ButtonStyled>
+  );
 };
