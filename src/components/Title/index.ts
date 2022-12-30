@@ -5,6 +5,7 @@ export interface TitleProps {
   fontSize?: number;
   fontWeight?: "300" | "500" | "700";
   padding?: string;
+  width?: number;
 }
 
 export const Title = styled.h1<TitleProps>`
@@ -15,4 +16,6 @@ export const Title = styled.h1<TitleProps>`
   color: ${theme.colors.text};
 
   padding: ${({ padding }) => padding ?? "0px"};
+
+  width: ${({ width }) => (width ? `${width}px` : "auto")};
 `;

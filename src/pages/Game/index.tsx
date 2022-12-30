@@ -2,12 +2,12 @@ import React from "react";
 
 import { Container, Title } from "../../components";
 import { Avatar } from "../../components/Avatar";
-import { useGame } from "../../hooks";
+import { useOfflineGame } from "../../hooks";
 import { Board, EndGameModal } from "./components";
 import { Content } from "./styles";
 
 export const Game: React.FC = () => {
-  const { game, updateBoardAndTurn, handleRestartGame } = useGame();
+  const { game, updateBoardAndTurn, handleRestartGame } = useOfflineGame();
 
   return (
     <Container>

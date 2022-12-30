@@ -2,6 +2,7 @@ import firebase from "firebase/compat/app";
 import { getAnalytics } from "firebase/analytics";
 
 import "firebase/compat/auth";
+import "firebase/compat/database";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -16,6 +17,8 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
+const database = firebase.database();
+
 const analytics = getAnalytics(app);
 
-export { firebase, auth, analytics };
+export { firebase, auth, database, analytics };

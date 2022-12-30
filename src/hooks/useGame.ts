@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import {
   BoardProps,
   GameSymbols,
@@ -7,13 +8,12 @@ import {
 } from "../interfaces";
 import { hasWinnerValidation, isGameOverValidation } from "../validations";
 
-export const useGame = () => {
-  const defaultGame: GameProps = {
-    board: ["", "", "", "", "", "", "", "", ""],
-    turn: "x",
-  };
+export interface UseGameProps {
+  game: GameProps;
+  setGame: (game: GameProps) => void;
+}
 
-  const [game, setGame] = useState<GameProps>(defaultGame);
+export const useGame = ({ game, setGame }: UseGameProps) => {
   const [board, setBoard] = useState<BoardProps>(game.board);
   const [turn, setTurn] = useState<GameSymbols>("x");
 
@@ -37,7 +37,9 @@ export const useGame = () => {
   };
 
   const handleRestartGame = () => {
-    setBoard(defaultGame.board);
+    const defaultBoard: BoardProps = ["", "", "", "", "", "", "", "", ""];
+
+    setBoard(defaultBoard);
     setTurn(game.turn);
   };
 
