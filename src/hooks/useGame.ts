@@ -1,11 +1,4 @@
-import { useEffect, useState } from "react";
-
-import {
-  BoardProps,
-  GameSymbols,
-  GameProps,
-  PlaceOptions,
-} from "../interfaces";
+import { BoardProps, GameProps, PlaceOptions } from "../interfaces";
 import { hasWinnerValidation, isGameOverValidation } from "../validations";
 
 export interface UseGameProps {
@@ -14,9 +7,6 @@ export interface UseGameProps {
 }
 
 export const useGame = ({ game, setGame }: UseGameProps) => {
-  const [board, setBoard] = useState<BoardProps>(game.board);
-  const [turn, setTurn] = useState<GameSymbols>("x");
-
   const updateBoardAndTurn = (place: PlaceOptions) => {
     const index = {
       one: 0,
@@ -30,36 +20,34 @@ export const useGame = ({ game, setGame }: UseGameProps) => {
       nine: 8,
     };
 
-    board[index[place]] = turn;
+    game.board[index[place]] = game.turn;
 
-    setBoard(board);
-    setTurn((state) => (state === "x" ? "o" : "x"));
+    const hasWinner = hasWinnerValidation({
+      board: game.board,
+      symbol: game.turn,
+    });
+
+    const isGameOver = isGameOverValidation({ board: game.board });
+
+    setGame({
+      ...game,
+      board: game.board,
+      turn: game.turn === "x" ? "o" : "x",
+      hasWinner: hasWinner ? game.turn : "",
+      isGameOver,
+    });
   };
 
   const handleRestartGame = () => {
     const defaultBoard: BoardProps = ["", "", "", "", "", "", "", "", ""];
 
-    setBoard(defaultBoard);
-    setTurn(game.turn);
-  };
-
-  useEffect(() => {
-    const previousTurn = turn === "x" ? "o" : "x";
-
-    const hasWinner = hasWinnerValidation({
-      board: board,
-      symbol: previousTurn,
-    });
-
-    const isGameOver = isGameOverValidation({ board: board });
-
     setGame({
-      board: board,
-      turn: turn,
-      hasWinner: hasWinner ? previousTurn : undefined,
-      isGameOver,
+      ...game,
+      board: defaultBoard,
+      hasWinner: "",
+      isGameOver: false,
     });
-  }, [board, turn]);
+  };
 
   return { game, updateBoardAndTurn, handleRestartGame };
 };
