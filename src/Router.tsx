@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { Create, Game, Home, Lobby } from "./pages";
+import { Create, Game, Home, Lobby, OnlineGame } from "./pages";
 
 export function Router() {
   return (
@@ -12,6 +12,7 @@ export function Router() {
         <Route path="/create" element={<Create />} />
 
         <Route path="/:id/lobby" element={<Lobby />} />
+        <Route path="/:id/game" element={<OnlineGame />} />
       </Routes>
     </BrowserRouter>
   );

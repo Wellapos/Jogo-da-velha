@@ -21,6 +21,7 @@ export const Create: React.FC = () => {
         ...user,
         symbol: "x",
       },
+      isStarted: false,
     });
 
     navigate(`/${gameId}/lobby`);
@@ -37,7 +38,7 @@ export const Create: React.FC = () => {
       <GoogleActions />
 
       <Title fontSize={60} padding="0 0 32px 0">
-        Jogo da Memória
+        Jogo da Velha
       </Title>
 
       <Content>

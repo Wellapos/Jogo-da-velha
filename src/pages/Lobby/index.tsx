@@ -45,7 +45,43 @@ export const Lobby: React.FC = () => {
     });
   };
 
-  const handleStartGame = () => {};
+  const handleStartGame = async () => {
+    if (!id) return;
+
+    if (!user) {
+      toast.error("Você precisa fazer login para jogar.", errorToastOptions);
+      return;
+    }
+
+    if (user.uid !== game.firstPlayer?.uid) {
+      toast.error(
+        "Somente o primeiro jogador pode iniciar a partida.",
+        errorToastOptions
+      );
+      return;
+    }
+
+    if (!game.secondPlayer) {
+      toast.error("Não é possível iniciar o jogo sozinho.", errorToastOptions);
+      return;
+    }
+
+    await updateGame({
+      id,
+      game: {
+        ...game,
+        isStarted: true,
+      },
+    });
+  };
+
+  useEffect(() => {
+    if (!game) return;
+
+    if (game.isStarted) {
+      navigate(`/${id}/game`);
+    }
+  }, [game]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -62,7 +98,7 @@ export const Lobby: React.FC = () => {
       <GoogleActions />
 
       <Title fontSize={60} padding="0 0 32px 0">
-        Jogo da Memória
+        Jogo da Velha
       </Title>
 
       <Content>
