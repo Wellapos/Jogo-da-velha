@@ -1,3 +1,5 @@
+import { UserProps } from "../contexts";
+
 export type PlaceOptions =
   | "one"
   | "two"
@@ -19,3 +21,12 @@ export interface GameProps {
 }
 
 export type BoardProps = GameSymbols[];
+
+export interface GameUserProps extends UserProps {
+  symbol: GameSymbols;
+}
+
+export interface OnlineGameProps extends GameProps {
+  firstPlayer?: GameUserProps;
+  secondPlayer?: GameUserProps;
+}
