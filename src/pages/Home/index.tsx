@@ -24,7 +24,7 @@ export const Home: React.FC = () => {
       <GoogleActions />
 
       <Title fontSize={60} padding="0 0 32px 0">
-        Jogo da Memória
+        Jogo da Velha
       </Title>
 
       <Content>

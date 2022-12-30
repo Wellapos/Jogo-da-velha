@@ -29,4 +29,5 @@ export interface GameUserProps extends UserProps {
 export interface OnlineGameProps extends GameProps {
   firstPlayer?: GameUserProps;
   secondPlayer?: GameUserProps;
+  isStarted?: boolean;
 }
