@@ -10,6 +10,7 @@ import { Provider } from "./contexts";
 import { GlobalStyle, theme } from "./styles";
 
 export const App: React.FC = () => {
+  console.log('hm')
   return (
     <Provider>
       <ThemeProvider theme={theme}>
