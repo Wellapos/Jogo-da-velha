@@ -8,7 +8,7 @@ import { Router } from './Router'
 
 import { Provider } from './contexts'
 import { GlobalStyle, theme } from './styles'
-import AdComponent from './ads/top'
+// import AdComponent from './ads/top'
 
 export const App: React.FC = () => {
   console.log('hm')
