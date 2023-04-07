@@ -1,13 +1,14 @@
-import React from "react";
-import { ThemeProvider } from "styled-components";
-import { ToastContainer } from "react-toastify";
+import React from 'react'
+import { ThemeProvider } from 'styled-components'
+import { ToastContainer } from 'react-toastify'
 
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css'
 
-import { Router } from "./Router";
+import { Router } from './Router'
 
-import { Provider } from "./contexts";
-import { GlobalStyle, theme } from "./styles";
+import { Provider } from './contexts'
+import { GlobalStyle, theme } from './styles'
+import AdComponent from './ads/top'
 
 export const App: React.FC = () => {
   console.log('hm')
@@ -15,7 +16,7 @@ export const App: React.FC = () => {
     <Provider>
       <ThemeProvider theme={theme}>
         <ToastContainer
-          position="top-right"
+          position='top-right'
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}
@@ -24,12 +25,13 @@ export const App: React.FC = () => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme="light"
+          theme='light'
         />
 
         <GlobalStyle />
+        {/* <AdComponent /> */}
         <Router />
       </ThemeProvider>
     </Provider>
-  );
-};
+  )
+}
