@@ -1,21 +1,21 @@
-import styled from "styled-components";
-import { theme } from "../../styles";
+import styled from 'styled-components'
+import { theme } from '../../styles'
 
 export interface TitleProps {
-  fontSize?: number;
-  fontWeight?: "300" | "500" | "700";
-  padding?: string;
-  width?: number;
+  fontSize?: number
+  fontWeight?: '300' | '500' | '700'
+  padding?: string
+  width?: number
 }
 
 export const Title = styled.h1<TitleProps>`
-  font-family: "Bellota", sans-serif;
-  font-size: ${({ fontSize }) => `${fontSize}px` ?? "42px"};
+  font-family: 'Bellota', sans-serif;
+  font-size: ${({ fontSize }) => `${fontSize}px` ?? '42px'};
   font-weight: ${({ fontWeight }) => fontWeight ?? 300};
 
   color: ${theme.colors.text};
 
-  padding: ${({ padding }) => padding ?? "0px"};
+  padding: ${({ padding }) => padding ?? '0px'};
 
-  width: ${({ width }) => (width ? `${width}px` : "auto")};
-`;
+  width: ${({ width }) => (width ? `${width}px` : 'auto')};
+`

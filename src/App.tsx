@@ -8,10 +8,11 @@ import { Router } from './Router'
 
 import { Provider } from './contexts'
 import { GlobalStyle, theme } from './styles'
-// import AdComponent from './ads/top'
+import Banner from './Ads/top'
+import { useMediaQuery } from '@mui/material'
 
 export const App: React.FC = () => {
-  console.log('hm')
+  const largeScreen = useMediaQuery('(min-width: 600px)')
   return (
     <Provider>
       <ThemeProvider theme={theme}>
@@ -29,8 +30,9 @@ export const App: React.FC = () => {
         />
 
         <GlobalStyle />
-        {/* <AdComponent /> */}
+        <Banner largeScreen={largeScreen} />
         <Router />
+        <div id='container-b331aae0e506ccb306be0c4131cca071'></div>
       </ThemeProvider>
     </Provider>
   )
